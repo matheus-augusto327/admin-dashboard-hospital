@@ -170,7 +170,7 @@ function createTableItems() {
     
         let name = `
             <tr>
-                <td><a class="text-decoration-none text-dark" data-bs-toggle="modal" href="#ModalToggle" role="button">${item}</a></td>
+                <td><a class="text-decoration-none text-dark" data-bs-toggle="modal" href="#ModalToggle" role="button" onclick="modalData(this)">${item}</a></td>
             </tr>
         `
         let listName = document.getElementById("gastronomiaList")
@@ -182,7 +182,7 @@ function createTableItems() {
     
         let name = `
             <tr>
-                <td><a class="text-decoration-none text-dark" data-bs-toggle="modal" href="#ModalToggle" role="button">${item}</a></td>
+                <td><a class="text-decoration-none text-dark" data-bs-toggle="modal" href="#ModalToggle" role="button" onclick="modalData(this)">${item}</a></td>
             </tr>
         `
         let listName = document.getElementById("tecnologiaList")
