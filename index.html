@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -41,11 +41,21 @@
                         <a class="nav-link" aria-current="page" href="#tecnologia" data-bs-toggle="collapse">Tecnologia
                             da Informação</a>
                     </li>
+                    <li class="nav-item float-end">
+                        
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <div class="input-group">
+                        <div class="input-group-text">Atendimentos</div>
+                        <input id="inputDay" type="date" class="form-control" data-bs-toggle="collapse" data-bs-target="#dayInfo" onchange="showCallsInfo()"></input>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5">
+    <div id="mainContainer" class="container mt-5">
         <table id="edificacoes" class="collapse table table-bordered table-striped table-hover table-responsive">
             <thead>
                 <tr>
@@ -95,10 +105,14 @@
 
             </tbody>
         </table>
+
+        <div id="dayInfo">
+
+        </div>
+        
     </div>
 
-    <div class="modal fade" id="ModalToggle" aria-hidden="true" aria-labelledby="ModalToggleLabel"
-        tabindex="-1">
+    <div class="modal fade" id="ModalToggle" aria-hidden="true" aria-labelledby="ModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-fullscreen modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -114,34 +128,53 @@
                                 <th class="text-center">Sintoma</th>
                                 <th class="text-center">Medicamento</th>
                                 <th class="text-center">Obs.</th>
+                                <th class="text-center">❌</th>
                             </tr>
                         </thead>
-                        <tbody id="modalList">
-            
-                        </tbody>
+                        <tbody id="modalItems"></tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#ModalToggle2"
-                        data-bs-toggle="modal">Adicionar Atendimento</button>
+                    <button class="btn btn-primary" data-bs-target="#ModalToggle2" data-bs-toggle="modal"
+                        onclick="modalInfoName()">Adicionar
+                        Atendimento</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="ModalToggle2" aria-hidden="true" aria-labelledby="ModalToggleLabel2"
-        tabindex="-1">
+    <div class="modal fade" id="ModalToggle2" aria-hidden="true" aria-labelledby="ModalToggleLabel2" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalToggleLabel2">Modal 2</h5>
+                    <h5 class="modal-title" id="ModalToggleLabel2">Informações do Atendimento</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Hide this modal and show the first with the button below.
+                    <form>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Nome</label>
+                            <input type="text" class="form-control disabled" id="inputName" disabled="disabled">
+
+                            <label for="" class="form-label mt-3">Data e Hora</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control rounded" id="inputDate">
+                                <span class="input-group-text bg-transparent border-0"> </span>
+                                <input type="time" class="form-control rounded" id="inputTime">
+                            </div>
+                            <label for="" class="form-label mt-3">Sintoma</label>
+                            <input type="text" class="form-control" id="inputSymptom">
+
+                            <label for="" class="form-label mt-3">Medicamento</label>
+                            <input type="text" class="form-control" id="inputMed">
+
+                            <label for="" class="form-label mt-3">Observação</label>
+                            <input type="text" class="form-control" id="inputObs">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#ModalToggle" data-bs-toggle="modal">Back to
-                        first</button>
+                    <button class="btn btn-primary" data-bs-target="#ModalToggle" data-bs-toggle="modal"
+                        onclick="createInfo(), showInfo()">Enviar</button>
                 </div>
             </div>
         </div>
